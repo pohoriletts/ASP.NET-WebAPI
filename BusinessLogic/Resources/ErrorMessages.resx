@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="InvalidCredentials" xml:space="preserve">
+    <value>Invalid email or passwords !</value>
+  </data>
   <data name="TransactionIsNullOrEmpy" xml:space="preserve">
-    <value>Transaction {id} is null or empy !</value>
+    <value>Transaction is null or empy !</value>
   </data>
   <data name="TransactionNotFound" xml:space="preserve">
-    <value>Transaction {id} was not found !</value>
+    <value>Transaction was not found !</value>
   </data>
 </root>

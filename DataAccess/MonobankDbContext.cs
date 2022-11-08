@@ -1,9 +1,10 @@
 ﻿using DataAccess.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Entities
 {
-    public class MonobankDbContext : DbContext
+    public class MonobankDbContext : IdentityDbContext
     {
         public MonobankDbContext()
         {

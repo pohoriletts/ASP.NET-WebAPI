@@ -61,7 +61,16 @@ namespace BusinessLogic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Transaction {id} is null or empy !.
+        ///   Looks up a localized string similar to Invalid email or passwords !.
+        /// </summary>
+        internal static string InvalidCredentials {
+            get {
+                return ResourceManager.GetString("InvalidCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction is null or empy !.
         /// </summary>
         internal static string TransactionIsNullOrEmpy {
             get {
@@ -70,7 +79,7 @@ namespace BusinessLogic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Transaction {id} was not found !.
+        ///   Looks up a localized string similar to Transaction was not found !.
         /// </summary>
         internal static string TransactionNotFound {
             get {

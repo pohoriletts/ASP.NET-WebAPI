@@ -1,12 +1,14 @@
 ﻿using BusinessLogic.DTOs;
 using BusinessLogic.Interfaces;
 using DataAccess.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 namespace WebApiMono.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
+    [Route("api/[controller]")]
     public class TransactionsController : ControllerBase
     {
         private readonly ITransactionService _transactionService;
@@ -16,9 +18,11 @@ namespace WebApiMono.Controllers
             _transactionService = services;
         }
 
+        [AllowAnonymous]
         [HttpGet("/All")]      
         public IActionResult GetAll() => Ok(_transactionService.GetAll());
 
+        [AllowAnonymous]
         [HttpGet("/Get/{id}")] 
         public IActionResult Get([FromRoute] int id) => Ok(_transactionService.Get(id));
      

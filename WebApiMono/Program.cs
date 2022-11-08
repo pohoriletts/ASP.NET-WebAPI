@@ -3,6 +3,7 @@ using BusinessLogic.Services;
 using DataAccess.Entities;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApiMono;
 
@@ -17,11 +18,16 @@ builder.Services.AddDbContext<MonobankDbContext>(x =>
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddIdentity<IdentityUser,IdentityRole>()
+        .AddEntityFrameworkStores<MonobankDbContext>()
+        .AddDefaultTokenProviders();
+    
 // validator
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddScoped<ITransactionService, TransactionService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>(); // Services for work with transactions
+builder.Services.AddScoped<IAccountServices, AccountServices>();       // Identity
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -41,6 +47,7 @@ app.UseHttpsRedirection();
 
 app.UseMiddleware<ExceptionMiddleware>();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
