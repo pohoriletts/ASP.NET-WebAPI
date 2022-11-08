@@ -16,18 +16,22 @@ namespace WebApiMono.Controllers
             _transactionService = services;
         }
 
-        [HttpGet("/All")]      public IActionResult GetAll() => Ok(_transactionService.GetAll());
+        [HttpGet("/All")]      
+        public IActionResult GetAll() => Ok(_transactionService.GetAll());
 
-        [HttpGet("/Get/{id}")] public IActionResult Get([FromRoute] int id) => Ok(_transactionService.Get(id));
+        [HttpGet("/Get/{id}")] 
+        public IActionResult Get([FromRoute] int id) => Ok(_transactionService.Get(id));
      
-        [HttpPost("/Create")]  public IActionResult Create([FromBody] TransactionDTO transaction)
+        [HttpPost("/Create")]  
+        public IActionResult Create([FromBody] TransactionDTO transaction)
         {
             if (!ModelState.IsValid) return BadRequest();
             _transactionService.Create(transaction);
             return Ok();
         }
 
-        [HttpPut("/Edit")]     public IActionResult Edit([FromBody] TransactionDTO transaction)
+        [HttpPut("/Edit")]     
+        public IActionResult Edit([FromBody] TransactionDTO transaction)
         {
             if (!ModelState.IsValid) return BadRequest();
 
@@ -36,7 +40,8 @@ namespace WebApiMono.Controllers
             return Ok();
         }
 
-        [HttpDelete("/Delete/{id}")] public IActionResult Delete([FromRoute] int id)
+        [HttpDelete("/Delete/{id}")] 
+        public IActionResult Delete([FromRoute] int id)
         {
             _transactionService.Delete(id);
             return Ok();
