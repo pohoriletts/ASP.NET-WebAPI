@@ -1,7 +1,7 @@
-﻿using BusinessLogic.DTOs;
-using DataAccess.Entities;
+﻿using Core.DTOs;
 using FluentValidation;
-namespace BusinessLogic.Validators
+
+namespace Core.Validators
 {
     public class TransactionValidatior:AbstractValidator<TransactionDTO>
     {

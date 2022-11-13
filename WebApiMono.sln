@@ -5,9 +5,9 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiMono", "WebApiMono\WebApiMono.csproj", "{7CD05575-5DAF-4554-90B5-063344F5AA4A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{7A362C22-2DC9-4BBB-BF23-267921477FBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infastructure", "DataAccess\Infastructure.csproj", "{7A362C22-2DC9-4BBB-BF23-267921477FBC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{97C1E862-D4DA-4BE1-AE39-97D4A3C08475}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "BusinessLogic\Core.csproj", "{97C1E862-D4DA-4BE1-AE39-97D4A3C08475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

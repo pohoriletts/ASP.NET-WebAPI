@@ -1,58 +1,60 @@
 ﻿using System.Net;
-using DataAccess;
 using AutoMapper;
-using BusinessLogic.DTOs;
-using BusinessLogic.Exceptions;
-using BusinessLogic.Interfaces;
-using BusinessLogic.Resources;
-using DataAccess.Entities;
-using Microsoft.EntityFrameworkCore;
+using Core.DTOs;
+using Core.Entities;
+using Core.Exceptions;
+using Core.Interfaces;
+using Core.Resources;
 
-namespace BusinessLogic.Services
+namespace Core.Services
 {
     public class TransactionService : ITransactionService
     {
-        private readonly MonobankDbContext context;
-        private readonly IMapper mapper;
-        public TransactionService(MonobankDbContext context, IMapper mapper)
-        {
-            this.context = context;
-            this.mapper = mapper;
-        }
-        public void Create(TransactionDTO transaction)
-        {
-            if (transaction == null) throw new HttpException(ErrorMessages.TransactionIsNullOrEmpy, HttpStatusCode.NoContent);
+        private readonly IMapper _mapper;
+        private readonly IRepository<Transaction> _transactionRepository;
 
-            context.Transactions.Add(mapper.Map<Transaction>(transaction));
-            context.SaveChanges();
-        }
-        public void Edit(TransactionDTO transaction)
+        public TransactionService(IRepository<Transaction> repository, IMapper mapper)
         {
-            if(transaction == null) throw new HttpException(ErrorMessages.TransactionIsNullOrEmpy, HttpStatusCode.NoContent);
+           _transactionRepository = repository;
+           _mapper = mapper;
+        }
+        public void Create(TransactionDTO transactionDTO)
+        {
+            if (transactionDTO == null) 
+                throw new HttpException(ErrorMessages.TransactionIsNullOrEmpy, HttpStatusCode.NoContent);
 
-            context.Transactions.Update(mapper.Map<Transaction>(transaction));
-            context.SaveChanges();
+            _transactionRepository.Insert(_mapper.Map<Transaction>(transactionDTO));
+            _transactionRepository.Save();
+        }
+        public void Edit(TransactionDTO transactionDTO)
+        {
+            _transactionRepository.Update(_mapper.Map<Transaction>(transactionDTO));
+            _transactionRepository.Save();
         }
         public void Delete(int id)
         {
-            var transaction = context.Transactions.Find(id);
+            var transaction = _transactionRepository.GetByID(id);
 
-            if (transaction == null) throw new HttpException(ErrorMessages.TransactionNotFound, HttpStatusCode.NotFound);
+            if (transaction == null) 
+                throw new HttpException(ErrorMessages.TransactionNotFound, HttpStatusCode.NotFound);
 
-            context.Transactions.Remove(transaction);
-            context.SaveChanges();
+            _transactionRepository.Delete(transaction);
+            _transactionRepository.Save();
         }
         public TransactionDTO? Get(int id)
         {
-            var transaction = context.Transactions.Find(id);
+            var transaction = _transactionRepository.GetByID(id);
 
-            if (transaction == null) { throw new HttpException(ErrorMessages.TransactionNotFound, HttpStatusCode.NotFound); }
-            return mapper.Map<TransactionDTO>(transaction);
+            if (transaction == null) 
+                throw new HttpException(ErrorMessages.TransactionNotFound, HttpStatusCode.NotFound);
+
+            return _mapper.Map<TransactionDTO>(transaction);
         }
         public IEnumerable<TransactionDTO> GetAll()
         {
-            var allTransactions = context.Transactions.Include(p => p.TypeTransaction).ToList();
-            return mapper.Map<IEnumerable<TransactionDTO>>(allTransactions);
+            var allTransaction = _transactionRepository.Get(includeProperties: $"{nameof(Transaction.TypeTransaction)}");
+
+            return _mapper.Map<IEnumerable<TransactionDTO>>(allTransaction);
         }
     }
 }

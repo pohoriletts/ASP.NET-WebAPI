@@ -1,6 +1,7 @@
-﻿using BusinessLogic.DTOs;
-using BusinessLogic.Interfaces;
+﻿using Core.DTOs;
+using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+
 namespace WebApiMono.Controllers
 {
     public class AccountController : Controller

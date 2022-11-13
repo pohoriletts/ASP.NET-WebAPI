@@ -1,8 +1,8 @@
-﻿using DataAccess.Entities;
+﻿using Core.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Entities
+namespace Infrastructure
 {
     public class MonobankDbContext : IdentityDbContext
     {

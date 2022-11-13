@@ -23,4 +23,8 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\Core.csproj" />
+  </ItemGroup>
+
 </Project>

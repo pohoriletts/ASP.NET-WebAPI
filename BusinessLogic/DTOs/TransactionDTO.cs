@@ -1,4 +1,4 @@
-﻿namespace BusinessLogic.DTOs
+﻿namespace Core.DTOs
 {
     public class TransactionDTO
     {

@@ -1,15 +1,10 @@
-﻿using BusinessLogic.DTOs;
-using BusinessLogic.Exceptions;
-using BusinessLogic.Interfaces;
-using BusinessLogic.Resources;
+﻿using Core.DTOs;
+using Core.Exceptions;
+using Core.Interfaces;
+using Core.Resources;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BusinessLogic.Services
+namespace Core.Services
 {
     public class AccountServices : IAccountServices
     {
@@ -19,7 +14,7 @@ namespace BusinessLogic.Services
         public AccountServices(UserManager<IdentityUser> user,
                                 SignInManager<IdentityUser> signInManager)
         {
-            this.userManager = user;
+            userManager = user;
             this.signInManager = signInManager;
         }
         public async Task SignUp(SignUpDTO data)

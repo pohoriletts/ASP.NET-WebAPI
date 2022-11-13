@@ -1,12 +1,11 @@
-﻿using BusinessLogic.DTOs;
-using BusinessLogic.Interfaces;
-using DataAccess.Entities;
+﻿using Core.DTOs;
+using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 namespace WebApiMono.Controllers
 {
-    [Authorize]
+    
     [ApiController]
     [Route("api/[controller]")]
     public class TransactionsController : ControllerBase

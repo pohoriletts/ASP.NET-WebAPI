@@ -1,4 +1,4 @@
-﻿using BusinessLogic.Exceptions;
+﻿using Core.Exceptions;
 using System.Net;
 using System.Text.Json;
 
