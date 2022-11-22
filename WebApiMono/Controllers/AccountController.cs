@@ -19,8 +19,8 @@ namespace WebApiMono.Controllers
 
         [HttpPost("/SignIn")] public async Task<IActionResult> SignIn([FromBody] SignInDTO data)
         {
-            await _services.SignIn(data.Email, data.Password);
-            return Ok();
+            var response = await _services.SignIn(data.Email, data.Password);
+            return Ok(response);
         }
 
         [HttpPost("/SignOut")] public async Task<IActionResult> SignOut()

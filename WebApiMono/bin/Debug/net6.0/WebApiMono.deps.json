@@ -611,7 +611,8 @@
         "dependencies": {
           "AutoMapper": "12.0.0",
           "FluentValidation": "11.2.2",
-          "FluentValidation.AspNetCore": "11.2.2"
+          "FluentValidation.AspNetCore": "11.2.2",
+          "System.IdentityModel.Tokens.Jwt": "6.8.0"
         },
         "runtime": {
           "Core.dll": {}

@@ -6,7 +6,7 @@ namespace Core.Interfaces
     {
         Task SignUp(SignUpDTO signUp);
 
-        Task SignIn(string email, string password);
+        Task<SignInResponseDTO> SignIn(string email, string password);
 
         Task SignOut();
     }
